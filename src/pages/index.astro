@@ -1,0 +1,16 @@
+---
+import Tarjetamusica from '../components/Tarjetamusica';
+import Layout from '../layouts/Layout.astro';
+import axios from "axios"
+
+const canciones  =  await  axios.get ("https://api.institutoalfa.org/api/songs")
+
+
+---
+
+<Layout>
+	{
+		canciones.data.songs.map(song => <tarjetamusica cancion={song} />)
+	}
+	
+</Layout>
