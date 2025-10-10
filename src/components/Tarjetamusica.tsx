@@ -1,4 +1,5 @@
 import { Song } from "../types/song"
+import { FaPlayCircle } from 'react-icons/fa';
 
 
 export default function (props: props) {
@@ -13,12 +14,18 @@ export default function (props: props) {
     
     
     return (
-    <div className="flex items-center gap-4"> 
+    <div className="flex items-center gap-4"
+    onClick={handlerclick}>
         <img  className="w-26 rounded-full" src={props.cancion.image.url} alt="" />
-        <div>
+        <div className="flex-1">
             <h3 className="text-lg font-semibold">
             {props.cancion.title}</h3>
             <p>{props.cancion.author}</p>
+        </div>
+        <div className="text-black">
+
+        <FaPlayCircle size={24}
+        className="hover:text-white" />
         </div>
     </div>
     )
