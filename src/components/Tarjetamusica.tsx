@@ -1,36 +1,54 @@
+
 import { Song } from "../types/song"
 import { FaPlayCircle } from 'react-icons/fa';
+import React from "react";
+import { Axios } from "axios";
+import  tarjetamusica  from "../components/Tarjetamusica";
+
+    interface song  {
+    title: string;
+    author: string;
+    image: {
+        url: string;
+    }
+}
+
+interface Props  {
+    cancion: song;
+};
 
 
-export default function (props: props) {
-    
-    // AQUI VOY A ESCRIBIR LA LOGICA DE COMO VA A FUNCIONAR
-    
-    
-    function handlerclick () {
-        alert(`Reproduciendo: ${props.cancion.title} - ${props.cancion.author}`);
+
+export default function Tarjetamusica(Props: Props) {
+    const handleclick = () => {
+        alert(`Reproduciendo: $Props.cancion.title} - ${Props.cancion.author}`);
     }
     
-    
-    
     return (
-    <div className="flex items-center gap-4"
-    onClick={handlerclick}>
-        <img  className="w-26 rounded-full" src={props.cancion.image.url} alt="" />
+    <div className="flex items-center gap-4 relative p-4 bg-gray-800 rounded-lg hover:bg-gray-700 cursor-pointer"
+        onClick={handleclick}
+    >
+        <img className="w-26 rounded-full"
+         src={cancion.image.url} 
+         alt={cancion.title} />
+        
+        
         <div className="flex-1">
-            <h3 className="text-lg font-semibold">
-            {props.cancion.title}</h3>
-            <p>{props.cancion.author}</p>
+            <h3 className="text-lg font-semibold">{cancion.title}</h3>
+            <p className="text-gray-400">{cancion.author}</p>
         </div>
+        
+        
         <div className="text-black">
-
-        <FaPlayCircle size={24}
-        className="hover:text-white" />
+        <FaPlayCircle size={24} className="hover:text-white" />
         </div>
     </div>
-    )
+)
 }
+ 
+
 
 interface props {
-cancion: Song
-}
+    cancion: Song;
+    
+     }
