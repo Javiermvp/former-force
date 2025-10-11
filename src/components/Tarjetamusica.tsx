@@ -29,13 +29,12 @@ export default function Tarjetamusica(Props: Props) {
         onClick={handleclick}
     >
         <img className="w-26 rounded-full"
-         src={cancion.image.url} 
-         alt={cancion.title} />
-        
-        
-        <div className="flex-1">
-            <h3 className="text-lg font-semibold">{cancion.title}</h3>
-            <p className="text-gray-400">{cancion.author}</p>
+        src={Props.cancion.image.url}
+        alt={Props.cancion.title}
+        />
+        <div className="flex flex-col">
+        <h3 className="text-white font-semibold">{Props.cancion.title}</h3>
+        <p className="text-gray-400">{Props.cancion.author}</p>
         </div>
         
         
@@ -52,3 +51,7 @@ interface props {
     cancion: Song;
     
      }
+
+     <style>
+
+     </style>
