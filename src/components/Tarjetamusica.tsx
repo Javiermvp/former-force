@@ -1,46 +1,39 @@
 import React from 'react';
 import { Song } from '../types/song';
-import { FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
+import onclick from 'react';
+import { Props } from 'astro';
 import { useState } from 'react';
-import { IconContext } from 'react-icons';
-import Songbar from '../components/Songbar';
-import axios from 'axios';
+import { FaPlayCircle } from 'react-icons/fa';
+import { type } from 'os';
 
 
-const canciones  =  await  axios.get ("https://api.institutoalfa.org/api/songs")
 
-interface Props {
-    cancion: Song;  
-}
 
-export default function Barradesonido(Props: Props) {
-    const [isMuted, setIsMuted] = useState(false);
+export default function tarjetamusica(Props: Song) {
+    const handerclick = () => {
+alert ("reproduciendo" + Props.cancion.Title);
+    }
 
-    const toggleMute = () => {
-        setIsMuted(!isMuted);
-    };
 
     return (
-        <div className="fixed bottom-0 left-0 right-0 bg-gray-900 text-white p-4 flex items-center justify-between">
-            <div className="flex items-center gap-4">
-                <img className="w-12 h-12 rounded-full"
-                    src={Props.cancion.image.url}
-                    alt={Props.cancion.title}
-                />
-                <div className="flex flex-col">
-                    <h3 className="text-white font-semibold">{Props.cancion.title}</h3>
-                    <p className="text-gray-400">{Props.cancion.author}</p>
-                </div>
-            </div>
-            <div className="flex items-center gap-4">
-                <IconContext.Provider value={{ size: '1.5em' }}>
-                    {isMuted ? (
-                        <FaVolumeMute onClick={toggleMute} />
-                    ) : (
-                        <FaVolumeUp onClick={toggleMute} />
-                    )}
-                </IconContext.Provider>
-            </div>
+        <div className='bg-gray-800 p-4 rounded-lg shadow-md flex items-center space-x-4 hover:bg-gray-700 cursor-pointer'
+        onClick={handerclick}>
+
+            <img className='w-26 rounded-full 
+             src={Props.cancion.image.url} 
+             alt={Props.cancion.Title}' 
+             />
+             <div className='flex-1'>
+                <h3 className='text-white text-lg font-semibold>{cancion.Title}</h3>
+                 {Props.cancion.Title}</h3>
+                <p className="text-gray-400">{Props.cancion.author}</p>
+             </div>
+        
+        
+             <div className='text-clack-500'> 
+                <FaPlayCircle size={30} className='hover:text-white'/>
         </div>
-    );
+        </div>
+    )
+
 }
