@@ -29,7 +29,6 @@ export default function tarjetamusica(props: Props) {
              <div className='text-clack-500'> 
                 <FaPlayCircle size={30} className='hover:text-white'/>
             </div>
-        </div >
+        </div>
     )
-
 }

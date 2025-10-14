@@ -14,7 +14,7 @@ const canciones  =  await  axios.get ("https://api.institutoalfa.org/api/songs")
 	
 	{
 
-	canciones.data.songs.map(song => <Tarjetamusica cancion={song} />)
+	canciones.data.songs.map(song => <Tarjetamusica cancion={song} client:visible />)
 
 	}
 	<Songbar />
