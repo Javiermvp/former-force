@@ -3,16 +3,39 @@ import Tarjetamusica from '../components/Tarjetamusica';
 import Layout from '../layouts/Layout.astro';
 import axios from "axios"
 import Songbar from '../components/Songbar';
-import { PlayerProvider } from "../context/PlayerContext";
-import 
+import { PlayerProvider, useplay } from "../context/playerContext";
+import React, {useEffect} from 'react';
+ 
 
-const canciones  =  await  axios.get ("https://api.institutoalfa.org/api/songs")
+
+const canciones  =  await  axios.get ("https://api.institutoalfa.org/api/songs");
+
+
+function playerInitializer({songs}) {
+	const {setPlaylist} = usePlayer();
+
+	useEffect (() =>{
+		setPlaylist(songs);
+	 },[songs]);
+
+
+	 return (
+		<>
+		{songs.map((songs) =>(
+			<Tarjetamusica key={songs.id} cancion={song} client:visible />
+			))}
+			<Songbar client:visible />
+			</>
+			);
+			 }
+
 
 
 ---
 
 <Layout>
 <PlayerProvider>
+	<playerInitializer songs={canciones.data.songs} client:visible />
 {canciones.data.songs.map((song) => (
 	<Tarjetamusica cancion={song} client:visible />
 ))}

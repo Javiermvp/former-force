@@ -27,13 +27,48 @@ export const PlayerProvider = ({ children }: { children: React.ReactNode }) => {
 
   const playSong = (song: Song) => {
     const Index = songs.findIndex ((s) => s.id === song.id);
+    setcurrentIndex (Index)
     setCurrentSong(song);
     setIsPlaying(true);
   };
 
   const togglePlay = () => setIsPlaying(!isPlaying);
+  
+  const playNext = () => {
+    if (songs.length=== 0) return
+    const nextIndex = (currentIndex + 1) % songs.length;
+    setcurrentIndex (nextIndex);
+    setCurrentSong (songs[nextIndex]);
+    setCurrentSong(true);
+};
+
+const playPrev = () =>{
+  if (songs.length === 0) return
+  const prevIndex = (currentIndex-1 + songs.length) % songs.length
+  setcurrentIndex (prevIndex);
+  setCurrentSong (songs[prevIndex]);
+  setIsPlaying(true)
+}
 
   return (
+   <PlayerContext.Provider
+   value={{
+    songs,
+  currentSong,
+  currentIndex,
+  isPlaying,
+  setPlaylist
+  playSong(song) 
+  togglePlay,
+  playNext,
+  playPrev
+  }}
+  >
+
+
+
+
+
     <PlayerContext.Provider value={{ currentSong, isPlaying, playSong, togglePlay }}>
       {children}
     </PlayerContext.Provider>
