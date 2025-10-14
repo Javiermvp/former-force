@@ -1,21 +1,22 @@
 ---
 import Tarjetamusica from '../components/Tarjetamusica';
 import Layout from '../layouts/Layout.astro';
-import Axios from "axios"
+import axios from "axios"
 import Songbar from '../components/Songbar';
-import playerprovider from "../"
+import { PlayerProvider } from "../context/PlayerContext";
+import 
 
-const canciones  =  await  Axios.get ("https://api.institutoalfa.org/api/songs")
+const canciones  =  await  axios.get ("https://api.institutoalfa.org/api/songs")
 
 
 ---
 
 <Layout>
-<PlayerProvider
+<PlayerProvider>
 {canciones.data.songs.map((song) => (
 	<Tarjetamusica cancion={song} client:visible />
 ))}
-	<Songbar client:visible
+	<Songbar client:visible />
 </PlayerProvider />
 	
 	{
