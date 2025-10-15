@@ -18,7 +18,7 @@ export default function () {
     const {  song } = useSong() 
 
     return (
-        
+
 
       <div className="Main-container">
 
@@ -35,6 +35,11 @@ export default function () {
                     }
                 } 
  />
+             <audio 
+             src={song?.audio.url}
+                controls
+                 />
+
 
             <div className="Second-cont">
                 <div className="Controls-cont">
