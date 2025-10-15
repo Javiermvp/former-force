@@ -4,6 +4,9 @@ import Layout from '../layouts/Layout.astro';
 import axios from "axios"
 import Songbar from '../components/Songbar';
  
+const canciones = await axios.get("https://api.institutoalfa.org/api/songs")
+
+
 ---
 
 
