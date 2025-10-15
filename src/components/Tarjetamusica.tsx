@@ -11,7 +11,6 @@ interface Props {
 
 export default function tarjetamusica(props: Props) {
     const handerclick = () => {
-        alert("reproduciendo" + props.cancion.title);
         updateSong(props.cancion)
      }
 

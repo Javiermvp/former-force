@@ -3,6 +3,7 @@ import Tarjetamusica from '../components/Tarjetamusica';
 import Layout from '../layouts/Layout.astro';
 import axios from "axios"
 import Songbar from '../components/Songbar';
+
  
 const canciones = await axios.get("https://api.institutoalfa.org/api/songs")
 
@@ -12,11 +13,16 @@ const canciones = await axios.get("https://api.institutoalfa.org/api/songs")
 
 
 <Layout>
+	<div class="song-container">
+		<h1 class="song-title">Canciones</h1>
+		<p class="song-subtitle">Explora nuestra colección de canciones</p>
+
+	</div>
 	
 	{
 
 	canciones.data.songs.map(song => <Tarjetamusica cancion={song} client:visible />)
 
 	}
-	<Songbar />
+	<Songbar client:visible/>
 </Layout>
