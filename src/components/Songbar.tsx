@@ -2,7 +2,6 @@ import React from "react"
 import tarjetamusica from "./Tarjetamusica"
 import type { Song } from "../types/song"
 import { FaPlayCircle } from "react-icons/fa"
-import '../styles/Songcard.css'
 import { FaPlay } from 'react-icons/fa6';
 import { BiSkipNext } from 'react-icons/bi';
 import { BiSkipPrevious } from 'react-icons/bi';
@@ -12,13 +11,15 @@ import { BiHeart } from 'react-icons/bi';
 import { BiSolidHeart } from 'react-icons/bi';
 import { BiShareAlt } from 'react-icons/bi';
 
+
+
 export default function (props: Props) {
 
     return (
         <div className="Main-container">
             
             
-            <img src={props.song.image.url} alt="" 
+            <img src={props.song.image.url} alt={props.song.title}
                 style={
                         {height:'90%',
                         width:'auto',
