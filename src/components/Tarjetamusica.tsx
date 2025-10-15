@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaPlayCircle } from 'react-icons/fa';
 import type { Song } from '../types/song';
-import { usePlayer } from './PlayerContext';
+
 
 interface Props {
     cancion: Song
@@ -12,6 +12,8 @@ export default function tarjetamusica(props: Props) {
     const handerclick = () => {
         alert("reproduciendo" + props.cancion.title);
     }
+    
+
 
 
     return (
